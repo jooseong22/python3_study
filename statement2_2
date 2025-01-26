@@ -1,0 +1,177 @@
+# 문제 : 실행되는 출력문에는 `참` 그렇지 않으면 `거짓` 이라고 적어주세요.
+# 조건 : `참1`, `참2`, `거짓1` 이런 순으로 적어주세요.
+# 실행 시 결과가 '참'만 나오면 성공
+
+# 개념시작
+if ( True ):
+  print("참")
+
+if ( False ):
+  print("거짓")
+# 개념끝
+
+# 문제시작
+a = 10
+
+# `==` => 같다.
+if ( a == 10 ):
+  print("참1")
+
+# `!=` => 같지 않다.
+if ( a != 10 ):
+  print("거짓1")
+
+if ( a > 10 ):
+  print("거짓2")
+
+if ( a >= 10 ):
+  print("참2")
+
+b = 10
+
+if ( a == b ):
+  print("참3")
+
+# c 에는 true or false 이 담긴다.
+c = a != b
+# c = False
+
+if ( c ):
+  print("거짓3")
+
+if ( c == False ): # ----> False == False => True
+  print("참4")
+
+# `not` => 반전
+if ( not c ): # not False -> True
+  print("참5")
+
+if ( not(not c) ): # not (not False) -> not True -> False
+  print("거짓4")
+
+d = True
+
+if ( c != d ): # False != True ==> True
+  print("참6")
+
+if ( 10 > 5 and -6 > -10 and 10 != 10 ): # T and T and F
+  print("거짓5")
+
+if ( 10 < 5 and -6 < -10 and 10 != 10 or 10 > 5 ): # F and F and F or T
+  print("참7")
+# 문제끝
+
+a = 10 # a 와 같은 값을 찾으시오.
+
+if a == 5:
+  print("답이야1")
+elif a == 7:
+  print("답이야2")
+elif a == 10:
+  print("답이야3")
+elif a == 12:
+  print("답이야4")
+elif a == 10:
+  print("답이야5")
+
+if 10 != 10:
+  print("맞아")
+else :
+  print("틀려")
+
+if 10 != 10:
+  print("맞아")
+elif 5 == 5:
+  print("맞아")
+elif 2 != 2:
+  print("맞아")
+else :
+  print("위에거 다 틀려서 이거 출력")
+
+a = 30
+b = 20
+
+if a >= 20:
+  print("a성인")
+elif b >= 20:  # 이러면 b 체크를 못하니 적절치 않은 코드
+  print("b성인")
+
+# 문제 : 10대, 20대, 30대 중 나이에 맞는 변수를 출력해주세요.
+
+age = 35 # 25로 바꿔서 실행해보세요. 15로도 바꿔서 실행해보세요.
+
+# v1
+print("v1")
+if age >= 10 and age < 20: # 10 ~ 19
+  print("10대")
+if age >= 20 and age < 30: # 20 ~ 29
+  print("20대")
+if age >= 30 and age < 40: # 30 ~ 39
+  print("30대")
+
+# v2
+print("v2")
+if age >= 10 and age < 20: # 10 ~ 19
+  print("10대")
+elif age >= 20 and age < 30: # 20 ~ 29
+  print("20대")
+elif age >= 30 and age < 40: # 30 ~ 39
+  print("30대")
+
+# v3
+print("v3")
+if age >= 10 and age < 20: # 10 ~ 19
+  print("10대")
+elif age >= 20 and age < 30: # 20 ~ 29
+  print("20대")
+else :
+  print("30대")
+
+# 파이썬 특수 문법
+print("파이썬 특수")
+if 10 <= age < 20 :
+  print("10대")
+elif 20 <= age < 30:
+  print("20대")
+else :
+  print("30대")
+
+# 문제 : 10대, 20대, 30대 중 나이에 맞는 변수를 출력해주세요.
+
+age = 35 # 25로 바꿔서 실행해보세요. 15로도 바꿔서 실행해보세요.
+
+# v1
+print("v1")
+if age >= 10 and age < 20: # 10 ~ 19
+  print("10대")
+if age >= 20 and age < 30: # 20 ~ 29
+  print("20대")
+if age >= 30 and age < 40: # 30 ~ 39
+  print("30대")
+
+# v2
+print("v2")
+if age >= 10 and age < 20: # 10 ~ 19
+  print("10대")
+elif age >= 20 and age < 30: # 20 ~ 29
+  print("20대")
+elif age >= 30 and age < 40: # 30 ~ 39
+  print("30대")
+
+# v3
+print("v3")
+if age >= 10 and age < 20: # 10 ~ 19
+  print("10대")
+elif age >= 20 and age < 30: # 20 ~ 29
+  print("20대")
+else :
+  print("30대")
+
+# 파이썬 특수 문법
+print("파이썬 특수")
+if 10 <= age < 20 :
+  print("10대")
+elif 20 <= age < 30:
+  print("20대")
+else :
+  print("30대")
