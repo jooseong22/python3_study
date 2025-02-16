@@ -1,0 +1,450 @@
+# 변수 : 하나의 공간(메모리). 하나의 값
+a = 10
+# b = 10, 20
+
+# print() : \n 포함
+print(a)
+print()
+print(a)
+print('문자열 속에 {} 들어간다'.format(a))
+print(f'문자열 속에 {a} 들어간다2')
+print(a, end='/////')
+print(a)
+print(20)
+
+# if 조건문 논리연산 시 참-실행, 거짓-미실행
+if 10 > 20 :
+  print(40)
+if 20 > 10 :
+  print(70)
+if 10 > 5:
+  if 2 > 111:
+    if 20 > 1:
+      print(20)
+
+if False:
+  print(60)
+elif True:
+  print('elif1')
+elif True:
+  print('elif2')
+else :
+  print("else")
+
+# while
+
+i = 1
+while i <= 5:
+  print(i)
+  i += 1
+
+i = 1
+while i <= 5:
+
+  j = 1
+  while j <= 3:
+    print(j)
+    j += 1
+
+  i += 1
+
+  # 문제 - 구구단을 출력해주세요. 2 ~ 9단 출력
+dan = 2
+while dan <= 9:
+
+  print("== {}단 ==".format(dan))
+  i = 1
+  while i < 10:
+    print("{} * {} = {}".format(dan, i, dan * i))
+    i += 1
+
+  dan += 1
+
+# 문제 - 구구구단을 출력해주세요. 1 ~ 9단 출력
+
+a = 1
+while a <= 3:
+
+  b = 1
+  while b <= 3:
+
+    c = 1
+    while c <= 3:
+      print(f"{a} * {b} * {c} = {a * b * c}")
+      c += 1a
+
+    b += 1
+
+  a += 1
+
+
+'''== 1단 ==
+1 * 1 * 1 = 1
+1 * 1 * 2 = 2
+1 * 1 * 3 = 3
+1 * 2 * 1 = 2
+1 * 2 * 2 = 4
+1 * 2 * 3 = 6
+1 * 3 * 1 = 3
+1 * 3 * 2 = 6
+1 * 3 * 3 = 9
+'''
+
+# for문 : 반복문
+
+print("== while, 0부터 9까지 ==")
+a = 0
+while a <= 9:
+  print(a, end=' ')
+  a += 1
+
+print("\n== for, 0부터 9까지 ==")
+for a in range(0, 10, 1):
+  print(a, end=' ')
+
+print("\n== for, 1부터 9까지(보폭생략) ==")
+for a in range(1, 10):
+  print(a, end=' ')
+
+print("\n== for, 0부터 9까지(초기값, 보폭생략) ==")
+for a in range(10):
+  print(a, end=' ')
+
+print("\n== for, 10부터 1까지 ==")
+for a in range(10, 0, -1):
+  print(a, end=' ')
+
+
+# 문제 : for문으로 1부터 100까지 출력
+for i in range(1, 101):
+  print(i, end=' ')  
+
+# 문제 : for문으로 100부터 1까지 출력
+for num in range(100, 0, -1):
+  print(num, end= ' ')  
+
+# 문제 : for문으로 1부터 100 사이의 짝수만 출력
+for i in range(2, 101, 2):
+  print(i, end=' ')
+print()
+for a in range(1, 101, 1):
+  if a % 2 == 0:
+    print(a, end = ' ')  
+
+# 문제 : for문으로 100부터 1 사이의 짝수만 출력
+for b in range(100, 0, -2):
+  print(b, end= " ")
+print()
+for b in range(100, 0, -1):
+  if b % 2 == 0:
+    print(b, end= ' ')    
+
+# 문제 : for문으로 구구단 8단 출력
+dan = 8
+for i in range(1, 10, 1):
+  # print('{} * {} = {}'.format(dan, i, dan * i))
+  print(f'{dan} * {i} = {dan * i}')    
+
+# 문제 : for문으로 구구단 1단 ~ 9단 출력
+for dan in range(1, 10, 1):
+  print(f'== {dan}단 ==')
+  for i in range(1, 10, 1):
+    print(f'{dan} * {i} = {dan * i}')
+
+
+# while 문이 유용한 경우
+# 예시) 게임프로그램 종료시점 잡을 때
+system = 1
+while system == 1:
+  life = 3
+
+  missile = 1
+
+  while life >= missile:
+    print("현재 생명 : {}".format(life))
+    life -= 1
+
+  if life == 0 :
+    system = 0  
+
+# 함수
+# 자주 사용하는 코드를 별도의 공간으로 격리시킨 것
+
+# 함수를 호출 = 격리되었던 코드가 실행
+
+# 주의점 : 함수명에 파이썬 예약어(Reserved Words) 못 쓴다.
+
+# 함수 만들기
+def print8dan():
+  for dan in range(8, 9):
+    print(f'== {dan}단 ==')
+    for i in range(1, 10):
+      print(f'{dan} * {i} = {dan * i}')
+
+# 함수 호출
+print8dan()
+print8dan()
+print8dan()
+print8dan()
+
+
+# 문제 : 함수를 사용해서 코드량을 확 줄여주세요.
+
+def gugudan():
+  dan = 8
+  i = 1
+  while i <= 9:
+    print("{} * {} = {}".format(dan, i, dan * i))
+    i += 1
+
+count = 1
+while count <= 9:
+  print(f"== {count}번째 구구단 8단 출력 ==")
+  gugudan()
+  count += 1
+
+def func1():
+  print(10)
+func1()
+
+def func2(num):
+  print("매개변수 num : ", num)
+func2(10)
+
+def func3(a, b):
+  print("매개변수 a : {}, b : {}".format(a, b))
+func3(7,8)
+
+def func4():
+  return 20
+result = func4()
+print('func4 리턴값 : {}'.format(result))
+
+
+def func5(n,m,l):
+  print('n : {}, m : {}, l : {}'.format(n, m, l))
+  return 50
+result2 = func5(1,2,3)
+print(f'result2 : {result2}')    
+
+def func5(a, b, c):
+  return a + b + c
+result2 = func5(1,2,3)
+print(f'result2 : {result2}')
+
+print("==print_1_10==")
+def print_1_10():
+  for i in range(1, 11, 1):
+    print(i, end=' ')
+print_1_10()
+print()
+
+print("==print_n_10==")
+def print_n_10(n):
+  for i in range(n, 11, 1):
+    print(i, end= ' ')
+print_n_10(8)
+print()
+print_n_10(5)
+print()
+print_n_10(2)
+
+print()
+print("==print_n_m==")
+def print_n_m(n, m):
+  for i in range(n, m + 1, 1):
+    print(i, end= ' ')
+
+print_n_m(3, 10)
+print()
+print_n_m(2, 7)
+print()
+print_n_m(7, 9)
+
+def plus(a, b):
+  result = a + b
+  return result
+
+plus_result = plus(5,7)
+print(plus_result)
+plus_result = plus(1,2)
+print(plus_result)
+plus_result = plus(77,34985394850)
+print(plus_result)
+
+
+def minus(a, b):
+  result = a - b
+  return result
+
+minus_result = minus(10, 5)
+print(minus_result)
+
+
+# 문제 : 함수를 사용해서 코드량을 확 줄여주세요.
+# 몇 단 출력해주는 함수
+def printGugudan(dan):
+  print(f'== {dan}단 ==')
+  for i in range(1, 10):
+    print('{} * {} = {}'.format(dan, i, dan * i))
+
+# v2
+for dan in range(1, 10):
+  printGugudan(dan)
+
+# v1
+# printGugudan(1)
+# printGugudan(2)
+# printGugudan(3)
+# printGugudan(4)
+# printGugudan(5)
+# printGugudan(6)
+# printGugudan(7)
+# printGugudan(8)
+# printGugudan(9)
+
+
+# 문제 : 매개변수의 개수를 맞춰주세요.
+# 조건 : 함수호출 시 사용한 인자에 따라 함수를 적절하게 잘 만들어 주세요.
+# 조건 : 오류가 나지 않으면 성공입니다.
+
+def a():
+  n = 10
+
+def b(a, b, c):
+  n = 5
+
+def c(a, b, c, d):
+  n = 1
+  print('b : ',b)
+
+a()
+b(1, 2, 3)
+c("안녕", 1 == 1, 500 + 50, 600)
+
+# 문제 : 입력받은 정수의 모든 약수를 출력하는 함수를 구현해주세요.
+
+# step1
+print(10 % 1)
+print(10 % 2)
+print(10 % 3)
+print(10 % 4)
+print(10 % 5)
+print(10 % 6)
+print(10 % 7)
+print(10 % 8)
+print(10 % 9)
+print(10 % 10)
+
+# step2
+if (10 % 1) == 0:
+  print("실행1")
+if (10 % 2) == 0:
+  print("실행2")
+if (10 % 3) == 0:
+  print("실행3")
+if (10 % 4) == 0:
+  print("실행4")
+if (10 % 5) == 0:
+  print("실행5")
+if (10 % 6) == 0:
+  print("실행6")
+if (10 % 7) == 0:
+  print("실행7")
+if (10 % 8) == 0:
+  print("실행8")
+if (10 % 9) == 0:
+  print("실행9")
+if (10 % 10) == 0:
+  print("실행10")
+
+# step3
+for i in range(1, 11):
+  if (10 % i) == 0:
+    print(f'약수 : {i}')
+
+# step4
+def print_divisors(num):
+  for i in range(1, num + 1):
+    if (num % i) == 0:
+      print(f'약수 : {i}')
+
+print_divisors(10) # 1,2,5,10
+print_divisors(5) # 1,5
+print_divisors(1000)
+
+# 전역변수, 지역변수
+# 지역변수 : 함수 내 사용하는 변수. 함수가 종료되면 이 변수는 소멸.
+# 전역변수 : 프로그램 내 사용하는 변수. 프로그램이 종료되면 소멸.
+
+def change():
+  a = 2 # a 는 지역변수다.
+
+a = 1 # a 는 지역변수
+print('함수 실행 전 a : ', a)
+
+change()
+print('함수 실행 후 a : ', a)
+
+def change():
+  global a # 전역변수로 만들어준다.
+  a = 2
+
+a = 1 # a 는 지역변수
+print('함수 실행 전 a : ', a)
+
+change()
+print('함수 실행 후 a : ', a)
+
+
+# 문제 : 5칙연산을 수행하는 함수를 만들어주세요.
+
+def plus(a, b):
+  return a + b
+
+print("3 더하기 5는 {} 입니다.".format(plus(3, 5)))
+print("20 더하기 50는 {} 입니다.".format(plus(20, 50)))
+
+# plus_3_nums 함수 구현
+def plus_3_nums(a,b,c):
+  return a + b + c
+
+print("3 더하기 5 더하기 7은 {} 입니다.".format(plus_3_nums(3, 5, 7)))
+# 출력 => 3 더하기 5 더하기 7은 15 입니다.
+
+# minus 함수 구현
+def minus(a, b):
+  return a - b
+print("10 빼기 5 는 {} 입니다.".format(minus(10, 5)))
+# 출력 => 10 빼기 5 는 5 입니다.
+
+# multiply 함수 구현
+def multiply(a, b):
+  return a * b
+
+print("10 곱하기 5 는 {} 입니다.".format(multiply(10, 5)))
+# 출력 => 10 곱하기 5 는 50 입니다.
+
+# mod 함수 구현
+def mod(n1, n2):
+  return n1 % n2
+
+print("4를 3으로 나눈 나머지는 {} 입니다.".format(mod(4, 3)))
+# 출력 => 4를 3으로 나눈 나머지는 1 입니다.
+
+# div 함수 구현
+def div(num1, num2):
+  # return num1 // num2
+  return (int)(num1 / num2)
+
+print("4를 3으로 나눈 몫은 {} 입니다.".format(div(4, 3)))
+# 출력 => 4를 3으로 나눈 몫은 1 입니다.
+
+# div2 함수 구현
+def div2(a, b):
+  return a / b
+
+print("4를 3으로 나눈 결과는 {} 입니다.".format(div2(4, 3)))
+# 출력 => 4를 3으로 나눈 결과는 1.3333333333333333 입니다.
+
+print((float)(3))
