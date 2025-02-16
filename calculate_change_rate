@@ -1,0 +1,18 @@
+def calculate_change_rate(entry_price, current_price):
+  """변동률을 계산하는 함수
+
+  Args:
+    entry_price: 진입 가격
+    current_price: 현재 가격
+
+  Returns:
+    변동률 (%)
+  """
+  change_rate = (current_price - entry_price) / entry_price * 100
+  return change_rate
+
+# 예시
+entry_price = 97573.4
+current_price = 97626.8
+change_rate = calculate_change_rate(entry_price, current_price)
+print(f"변동률: {change_rate:.4f}%")
