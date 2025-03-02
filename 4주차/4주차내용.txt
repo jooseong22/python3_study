@@ -1,0 +1,445 @@
+# 문제 : 온도단위 섭씨를, 화씨로 바꿔주는, 함수 c_to_f 를 구현해주세요.
+# 조건 : 공식 = 섭씨온도 * (9 / 5) + 32 => 화씨온도
+
+def c_to_f(c):
+  f = 0 # 구현
+
+  f = c * (9/5) + 32
+
+  return f
+
+print(c_to_f(10))
+# 출력 => 50.0
+print(c_to_f(20))
+# 출력 => 68.0
+print(c_to_f(30))
+# 출력 => 86.0
+#############################
+# 함수명 생성규칙
+# 리턴값이 bool 타입(참, 거짓) 경우 => 질문형 이름 is_~
+# 리턴값이 bool 아닌 경우 => 의미가 담긴 이름 print_10times
+#############################
+
+#############################
+# 문제 : 입력받은 정수가 짝수인지 아닌지 판별해주는 함수 구현
+# even 짝수, odd 홀수
+# 리턴값 타입 bool이겠구나.
+##########################3##
+
+
+def is_even(num):
+  if num % 2 == 0:
+    return True
+  else :
+    return False
+
+print("10은(는) 짝수인가요? : {}".format(is_even(10)))
+print("11은(는) 짝수인가요? : {}".format(is_even(11)))
+print("12은(는) 짝수인가요? : {}".format(is_even(12)))
+print("13은(는) 짝수인가요? : {}".format(is_even(13)))
+
+# 문제 : 입력받은 정수가 3의 배수인지 알려주는 함수 구현
+def is_3_multiple(num):
+  if num % 3 == 0:
+    return True
+  return False
+
+print("10은(는) 3의 배수인가요? : {}".format(is_3_multiple(10)))
+print("12은(는) 3의 배수인가요? : {}".format(is_3_multiple(12)))
+##############################
+
+
+#문제 : 입력받은 정수가 100보다 큰지 알려주는 함수 구현
+def is_bigger_than_100(n):
+  if n > 100:
+    return True
+  return False
+
+print("128은(는) 100보다 큽니다. : {}".format(is_bigger_than_100(128)))
+print("28은(는) 100보다 큽니다. : {}".format(is_bigger_than_100(28)))
+print("100은(는) 100보다 큽니다. : {}".format(is_bigger_than_100(100)))
+
+
+###############################
+# 2의 배수: 2, 4, 6, 8, 10 ~~~
+# a = 1
+# if a % 2 == 0:
+#   print(1)
+# a += 1
+# if a % 2 == 0:
+#   print(2)
+# a += 1
+# if a % 2 == 0:
+#   print(3)
+# a += 1
+# if a % 2 == 0:
+#   print(4)
+
+for a in range(1, 11, 1):
+  if a % 2 == 0:
+    print(f'{a}는 2의 배수야')
+
+# 약수 : 나누어 떨어지게 하는 수
+# 10의 약수
+num = 10
+for a in range(1, num + 1, 1):
+  if num % a == 0:
+    print(f'{a}는 {num}의 약수야')
+
+########################
+
+
+i = 10
+sum = 0
+for a in range(1, i + 1, 1):
+  sum += a
+
+print(sum)
+
+#########################
+
+
+# 소수 : 1과 자기자신만을 약수로 가지는 수. 1은 제외.
+# 2 : 1, 2 => 소수
+# 3 : 1, 3 => 소수
+# 4 : 1, 2, 4 => 소수 아님
+# 10 : 1, 2, 5, 10 => 소수 아님
+
+# 소수는 약수의 개수가 총 2개인 수다 (규칙. 알고리즘)
+
+# n = 101
+# count = 0
+# for a in range(1, n + 1, 1):
+#   if n % a == 0 : # n의 약수가 True
+#     count += 1
+# if count == 2:
+#   print(f'{n}은(는) 소수야')
+# else :
+#   print(f'{n}은(는) 소수가 아니야')
+
+def is_prime_num(n):
+  count = 0
+  for a in range(1, n + 1, 1):
+    if n % a == 0 : # n의 약수가 True
+      count += 1
+  if count == 2:
+    print(f'{n}은(는) 소수야')
+  else :
+    print(f'{n}은(는) 소수가 아니야')
+
+is_prime_num(1)
+is_prime_num(10)
+is_prime_num(100)
+is_prime_num(101)
+is_prime_num(123)
+is_prime_num(56473)
+
+
+##########################
+
+
+# 문제 : 입력받은 정수의 모든 약수의 합을 리턴하는 함수를 구현해주세요.
+
+# num = 10
+# sum = 0
+# for a in range(1, num + 1, 1):
+#   if num % a == 0: # 약수 구함
+#     sum += a # 약수의 합 구함
+# print(sum)
+
+def get_divisors_sum(num):
+  sum = 0
+  for a in range(1, num + 1, 1):
+    if num % a == 0: # 약수 구함 : a가 약수
+      sum += a # 약수의 합 구함
+  return sum
+
+print("정수 1000의 약수의 합 : {}".format(get_divisors_sum(1000)))
+print("정수 10의 약수의 합 : {}".format(get_divisors_sum(10)))
+# 출력 => 정수 1000의 약수의 합 : 2340
+
+############################
+
+
+# 문제 : 입력받은 정수가 소수인지 아닌지 알려주는 함수를 구현해주세요.
+# v1
+# def is_prime_number(n):
+#   count = 0
+#   for a in range(1, n + 1, 1):
+#     if n % a == 0 : # n의 약수가 True
+#       count += 1
+#   if count == 2: # 약수 개수 2개면 소수
+#     return True
+#   else :
+#     return False
+
+# v2
+def get_divisors_sum(num):
+  sum = 0
+  for a in range(1, num + 1, 1):
+    if num % a == 0: # 약수 구함 : a가 약수
+      sum += a # 약수의 합 구함
+  return sum
+
+def is_prime_number(n):
+  if get_divisors_sum(n) == n + 1:
+    return True
+  return False
+
+print("3은 소수입니다. : {}".format(is_prime_number(3)))
+print("4은 소수입니다. : {}".format(is_prime_number(4)))
+print("1000은 소수입니다. : {}".format(is_prime_number(1000)))
+
+#########################
+
+# 문제 - 1부터 1000사이에 존재하는 소수들의 개수를 출력해주세요.(개념 : 함수, 반복문, 리턴)
+
+def is_prime_number(n):
+  count = 0
+  for a in range(1, n + 1, 1):
+    if n % a == 0 : # n의 약수가 True
+      count += 1
+  if count == 2: # 약수 개수 2개면 소수
+    return True
+  else :
+    return False
+
+count = 0
+for a in range(1, 1001, 1):
+  if is_prime_number(a):
+    count += 1
+
+print(count)
+
+#######################
+#문제 : 입력받은 숫자가 10이라고 할때 1부터 10 사이에 존재하는 모든 소수를 출력하는 함수 구현
+def is_prime_number(n):
+  count = 0
+  for a in range(1, n + 1, 1):
+    if n % a == 0 : # n의 약수가 True
+      count += 1
+  if count == 2: # 약수 개수 2개면 소수
+    return True
+  else :
+    return False
+
+def print_1_to_n_prime_numbers(n):
+  for a in range(1, n + 1, 1):
+    if is_prime_number(a): # 소수만 참
+      print(a)
+
+print_1_to_n_prime_numbers(10)
+
+######################
+
+# 문제 : 1부터 n 사이의 수 중에서 소수의 개수 반환하는 함수 `get_1_to_n_prime_numbers_count` 를 구현해주세요.
+
+def is_prime_number(n):
+  count = 0
+  for a in range(1, n + 1, 1):
+    if n % a == 0 : # n의 약수가 True
+      count += 1
+  if count == 2: # 약수 개수 2개면 소수
+    return True
+  else :
+    return False
+
+#1부터 n 사이의 수 중에서 소수의 개수 반환하는 함수
+def get_1_to_n_prime_numbers_count(n):
+  count = 0
+  # 소수 구하기
+  for a in range(1, n + 1, 1):
+    if is_prime_number(a):
+      # 소수 개수
+      count += 1
+  # 개수 리턴
+  return count
+
+
+number = 1000
+count = get_1_to_n_prime_numbers_count(number)
+print("1부터 {}사이에 존재하는 소수의 개수 : {}개\n".format(number, count))
+  # 출력 => 1부터 1000사이에 존재하는 소수의 개수 : 168개
+
+number = 2000
+count = get_1_to_n_prime_numbers_count(number)
+print("1부터 {}사이에 존재하는 소수의 개수 : {}개\n".format(number, count))
+  # 출력 => 1부터 2000사이에 존재하는 소수의 개수 : 303개
+
+########################
+
+# 문제 : 1부터 n 사이의 수 중에서 소수의 합을 반환하는 함수 `get_1_to_n_prime_numbers_sum` 를 구현해주세요.
+
+def is_prime_number(n):
+  count = 0
+  for a in range(1, n + 1, 1):
+    if n % a == 0 : # n의 약수가 True
+      count += 1
+  if count == 2: # 약수 개수 2개면 소수
+    return True
+  else :
+    return False
+
+# 1부터 n 사이의 수 중에서 소수의 합 반환하는 함수
+def get_1_to_n_prime_numbers_sum(n):
+  sum = 0
+  # 소수 구하기
+  for a in range(1, n + 1, 1):
+    if is_prime_number(a):
+      # 소수 합
+      sum += a
+  # 합 리턴
+  return sum
+
+
+number = 1000
+sum = get_1_to_n_prime_numbers_sum(number)
+print("1부터 {}사이에 존재하는 소수의 개수 : {}개\n".format(number, sum))
+  # 출력 => 1부터 1000사이에 존재하는 소수의 합 : 76127
+
+number = 2000
+sum = get_1_to_n_prime_numbers_sum(number)
+print("1부터 {}사이에 존재하는 소수의 개수 : {}개\n".format(number, sum))
+ # 출력 => 1부터 2000사이에 존재하는 소수의 합 : 277050
+
+##########################
+
+# 참고)
+# 이제껏 is_prime_number함수는 소수판별 True/False => 다른 함수 내 if문 활용
+# 그냥 한 함수에 담을 수는 없나? ==> 한 코드
+# 1부터 1000까지 소수 판별하기
+
+j = 1
+while j <= 1000:
+  if j==1:
+    print("1은 소수가 아니야")
+  else:
+    is_prime = True
+    a = 2
+    while a <= j:
+      if j % a == 0 and j != a:
+        print(f'{j}는 소수가 아니야')
+        is_prime = False
+        break
+      a += 1
+
+    if is_prime:
+      print(f'{j}는 소수다')
+  j += 1
+
+  #########################
+
+  # 별 피라미드를 출력해주세요.
+# i 변수에 넣는 숫자는 피라미드의 층수를 의미합니다.
+
+i = 7
+
+# v1
+for f in range(0, i):
+  # 공백 찍기
+  for b in range(f, (i - 1), 1):
+    print(' ', end='')
+
+  # 별 찍기
+  for a in range(0, (f * 2) + 1):
+    print('*', end='')
+  print()
+
+# v2
+i = 7
+for a in range(0, i, 1):
+  print(' ' * ((i - a) - 1), end='')
+  print('*' * ((a * 2) + 1))
+
+# v3
+i = 7
+s = ''
+for a in range(1, i + 1, 1):
+  s += ' ' * ((i - a))
+  s += '*' * ((a * 2) - 1)
+  s += '\n'
+print(s)
+
+#########################
+
+# 숫자 피라미드 버전1를 출력해주세요.
+# i 변수에 넣는 숫자는 피라미드의 층수를 의미합니다.
+
+i = 5
+
+for f in range(i):
+  for b in range(f, (i - 1), 1):
+    print(' ', end='')
+
+  for l_num in range(f + 1, 0, -1):
+    print(l_num, end='')
+
+  for r_num in range(2, f + 2, 1):
+    print(r_num, end='')
+
+  print()
+
+  #######################
+
+  # 숫자 피라미드 버전2을 출력해주세요.
+# i 변수에 넣는 숫자는 피라미드의 층수를 의미합니다.
+
+i = 5
+for f in range(i): # f : 0 1 2 3
+  for b in range(f, (i - 1), 1):
+    print(' ', end='')
+
+  for l_num in range((i - f), i + 1, 1): # 5 4 3 2 1
+    print(l_num, end='')
+
+  for r_num in range((i - 1), ((i - f) - 1), -1): # 4 3 2 1
+    print(r_num, end='')
+
+  print()
+
+  #####################
+
+  s = 'x'
+# s += 1 # 문자 '' + 숫자 : 연산 오류
+s += str(1) # 숫자를 문자로 변환
+print(s)
+
+num = 10
+num = float(num)
+print(num)
+
+########################
+
+i = 7
+num = 1 # 첫번째 숫자
+
+for f in range(i):
+  s = '' # 각 층의 공백&숫자
+  num2 = num - 1 # 첫번째 숫자 - 1
+  num3 = 2
+
+  for b in range(i):
+    s += ' '
+  s = s + str(num) # 첫번째 숫자 s에 추가
+  for l_num in range(1, num): # 숫자 1씩 감소
+    s += str(num2)
+    num2 = num2 - 1
+  for r_num in range(1, num): # 숫자 1씩 증가
+    s += str(num3)
+    num3 = num3 + 1
+
+  print(s)
+  i -= 1 # 공백을 1씩 줄이는데 쓰인 코드
+  num += 1
+########################
+s = ''
+i = 5
+for f in range(i):
+  s += ' ' * (i - f)
+  s += '*' * ((f * 2)+ 1)
+  s += '\n'
+
+print(s)
+
+
+
