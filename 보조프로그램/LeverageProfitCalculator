@@ -1,0 +1,109 @@
+class LeverageProfitCalculator:
+    """
+    다중 포지션 레버리지 수익률 계산 클래스
+    [기능]
+    - 롱/숏 포지션 자동 구분 계산
+    - 청산가격 시뮬레이션
+    - 실시간 위험노출 분석
+    """
+    
+    def __init__(self, entry_price, stop_loss_pct, take_profit_pct, leverage, position_type='long'):
+        """
+        :param entry_price: 진입가격 (USDT)
+        :param stop_loss_pct: 기초자산 대비 손절% 
+        :param take_profit_pct: 기초자산 대비 익절%
+        :param leverage: 레버리지 배수
+        :param position_type: 포지션 유형 ('long'/'short')
+        """
+        if position_type not in ['long', 'short']:
+            raise ValueError("포지션 유형은 'long' 또는 'short'여야 합니다.")
+
+        self.entry_price = entry_price
+        self.stop_loss_pct = stop_loss_pct
+        self.take_profit_pct = take_profit_pct
+        self.leverage = leverage
+        self.position_type = position_type
+
+        self._validate_parameters()
+        self.calculate()
+
+    def _validate_parameters(self):
+        """파라미터 유효성 검증"""
+        if self.leverage <= 0:
+            raise ValueError("레버리지는 0보다 커야 합니다.")
+        if self.stop_loss_pct <= 0 or self.take_profit_pct <= 0:
+            raise ValueError("손절/익절 퍼센티지는 양수여야 합니다.")
+
+    def calculate(self):
+        """계산 프로세스 실행"""
+        self._calc_price_levels()
+        self._calc_leverage_impact()
+        self._calc_risk_reward()
+
+    def _calc_price_levels(self):
+        """포지션별 가격 레벨 계산"""
+        if self.position_type == 'long':
+            self.stop_loss_price = self.entry_price * (1 - self.stop_loss_pct/100)
+            self.take_profit_price = self.entry_price * (1 + self.take_profit_pct/100)
+        else:  # short
+            self.stop_loss_price = self.entry_price * (1 + self.stop_loss_pct/100)
+            self.take_profit_price = self.entry_price * (1 - self.take_profit_pct/100)
+
+    def _calc_leverage_impact(self):
+        """레버리지에 따른 손익 확대 효과 계산"""
+        self.leveraged_loss_pct = self.stop_loss_pct * self.leverage
+        self.leveraged_profit_pct = self.take_profit_pct * self.leverage
+
+    def _calc_risk_reward(self):
+        """위험-보상 비율 계산"""
+        self.risk_reward_ratio = round(self.take_profit_pct / self.stop_loss_pct, 2)
+
+    def get_results(self, format_str=False):
+        """결과 데이터 반환"""
+        results = {
+            '포지션 유형': self.position_type.upper(),
+            '진입가격': self.entry_price,
+            '손절가격': round(self.stop_loss_price, 2),
+            '익절가격': round(self.take_profit_price, 2),
+            '레버리지 손실율%': round(self.leveraged_loss_pct, 2),
+            '레버리지 수익율%': round(self.leveraged_profit_pct, 2),
+            '위험보상비': self.risk_reward_ratio
+        }
+        return results if not format_str else self._format_results(results)
+
+    def _format_results(self, data):
+        """결과 포맷팅"""
+        position_symbol = '▲ LONG' if self.position_type == 'long' else '▼ SHORT'
+        return (
+            f"{position_symbol} 포지션\n"
+            f"▶︎ 진입가: ${data['진입가격']:,.2f}\n"
+            f"▷ 손절가: ${data['손절가격']:,.2f} ({self.stop_loss_pct}% {'하락' if self.position_type == 'long' else '상승'})\n"
+            f"▷ 익절가: ${data['익절가격']:,.2f} ({self.take_profit_pct}% {'상승' if self.position_type == 'long' else '하락'})\n"
+            f"★ 레버리지 {self.leverage}배 적용시\n"
+            f"- 최대 손실: {data['레버리지 손실율%']}%\n"
+            f"- 기대 수익: {data['레버리지 수익율%']}%\n"
+            f"Risk-Reward: {data['위험보상비']}:1"
+        )
+
+# 사용 예시(기초자산%로 설정)
+if __name__ == "__main__":
+    # 롱 포지션 예시
+    long_calculator = LeverageProfitCalculator(
+        entry_price=2206.45,
+        stop_loss_pct=3.5,
+        take_profit_pct=10.5,
+        leverage=15,
+        position_type='long'
+    )
+    print(long_calculator.get_results(format_str=True))
+    print("\n" + "="*50 + "\n")
+    
+    # 숏 포지션 예시 
+    short_calculator = LeverageProfitCalculator(
+        entry_price=85663.9,
+        stop_loss_pct=3.3,
+        take_profit_pct=6.6,
+        leverage=15,
+        position_type='short'
+    )
+    print(short_calculator.get_results(format_str=True))
